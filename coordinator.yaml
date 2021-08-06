@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coordinator-deployment
+  labels:
+    app: coordinator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coordinator
+  template:
+    metadata:
+      labels:
+        app: coordinator
+    spec:
+      containers:
+        - name: coordinator
+          image: stressg:0.1
+          ports:
+            - containerPort: 80
+          command: ["/bin/sh"]
+          args: ["do cd /root/downloads/stressgrid/coordinator/", "do _build/prod/rel/coordinator/bin/coordinator start"]
