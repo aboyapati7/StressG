@@ -14,10 +14,18 @@ spec:
       labels:
         app: coordinator
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: coordinator
-          image: stressg:0.1
+          image: boyapatiakhil7/stressg:0.1
           ports:
             - containerPort: 80
-          command: ["/bin/sh"]
-          args: ["do cd /root/downloads/stressgrid/coordinator/", "do _build/prod/rel/coordinator/bin/coordinator start"]
+          command: ["/bin/sh","-c"]
+          args: ["/root/downloads/stressgrid/coordinator/_build/prod/rel/coordinator/bin/coordinator start"]
+          env:
+            - name: COORDINATOR_POD_IP
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+
