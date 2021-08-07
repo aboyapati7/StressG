@@ -21,4 +21,3 @@ spec:
           image: boyapatiakhil7/stressg:0.1
           command: ["/bin/sh","-c"]
           args: ["export COORDINATOR_URL=ws://$COORDINATOR_GEN_SERVICE_SERVICE_HOST:9696 && /root/downloads/stressgrid/generator/_build/prod/rel/generator/bin/generator start"]
-

@@ -23,9 +23,3 @@ spec:
             - containerPort: 80
           command: ["/bin/sh","-c"]
           args: ["/root/downloads/stressgrid/coordinator/_build/prod/rel/coordinator/bin/coordinator start"]
-          env:
-            - name: COORDINATOR_POD_IP
-                valueFrom:
-                  fieldRef:
-                    fieldPath: status.podIP
-
